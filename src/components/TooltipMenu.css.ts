@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css'
+import { createVar, style } from '@vanilla-extract/css'
 
 export const tooltip = style({
   position: 'relative',
@@ -26,7 +26,6 @@ export const content = style({
   flexDirection: 'column',
   minWidth: '200px',
   minHeight: '48px',
-  // padding: '10px 0px',
   borderRadius: '10px',
   backgroundColor: '#f2f2f2',
   color: 'black',
@@ -43,12 +42,17 @@ export const content = style({
   },
 })
 
+export const tooltipMenuItemStyleTextColor = createVar()
+
 export const tooltipMenuItemStyle = style({
-  // width: '100%',
   borderBottom: '1px black solid',
   padding: '0 8px',
   cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   ':last-child': {
     borderBottom: 'none',
   },
+  color: tooltipMenuItemStyleTextColor,
 })
