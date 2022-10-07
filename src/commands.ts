@@ -1,4 +1,5 @@
 import { invoke } from '@tauri-apps/api/tauri'
+
 import { Device } from './models'
 
 export const saveDevices = async (devices: Device[]) => {

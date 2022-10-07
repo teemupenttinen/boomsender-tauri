@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css'
+
 import { base } from '../styles/app.css'
 
 export const buttonStyle = style([

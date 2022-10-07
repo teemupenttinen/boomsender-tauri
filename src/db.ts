@@ -1,4 +1,5 @@
 import { BaseDirectory, createDir, readTextFile, writeTextFile } from '@tauri-apps/api/fs'
+
 import { Device } from './models'
 
 export const saveDevices = async (devices: Device[]) => {
