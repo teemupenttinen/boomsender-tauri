@@ -1,6 +1,7 @@
-import { useRouter } from 'next/router'
-import { motion, AnimatePresence } from 'framer-motion'
 import { PropsWithChildren, useEffect, useState } from 'react'
+
+import { motion, AnimatePresence } from 'framer-motion'
+import { useRouter } from 'next/router'
 
 const variants = (goBack: boolean) => ({
   inactive: {
@@ -30,8 +31,18 @@ const variants = (goBack: boolean) => ({
 })
 
 const ViewTransition: React.FC<PropsWithChildren> = ({ children }) => {
-  const { asPath, beforePopState, events } = useRouter()
+  const { asPath, beforePopState, events, query } = useRouter()
   const [animateBack, setAnimateBack] = useState(false)
+  const [position, setPosition] = useState(0)
+
+  useEffect(() => {
+    if (!query['position'] || typeof query['position'] !== 'string') return
+    const newPosition = parseInt(query['position'])
+    const transitionRight = position - newPosition <= 0 ? false : true
+    setPosition(newPosition)
+    setAnimateBack(transitionRight)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query])
 
   const routeChangeComplete = () => {
     setAnimateBack(false)
@@ -48,7 +59,7 @@ const ViewTransition: React.FC<PropsWithChildren> = ({ children }) => {
     return () => {
       events.off('routeChangeComplete', routeChangeComplete)
     }
-  }, [beforePopState, asPath])
+  }, [beforePopState, asPath, events])
 
   return (
     <AnimatePresence initial={false} mode="popLayout">
