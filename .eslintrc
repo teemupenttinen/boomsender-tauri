@@ -1,0 +1,48 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["prettier", "react-hooks", "@typescript-eslint"],
+  "extends": ["next", "next/core-web-vitals", "plugin:prettier/recommended", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "prefer-const": "error",
+    "prettier/prettier": ["error", { "semi": false }],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-img-element": "warn",
+    "import/no-duplicates": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", ["parent", "sibling", "index"]],
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "@/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "assets/**",
+            "group": "index",
+            "position": "after"
+          },
+          {
+            "pattern": ".*/*.css",
+            "group": "index",
+            "position": "after"
+          },
+          {
+            "pattern": "react",
+            "group": "builtin",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"]
+      }
+    ]
+  }
+}
