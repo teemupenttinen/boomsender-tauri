@@ -28,3 +28,8 @@ globalStyle('button', {
   cursor: 'pointer',
   outline: 'inherit',
 })
+
+globalStyle('h2', {
+  margin: '0',
+  padding: '0',
+})

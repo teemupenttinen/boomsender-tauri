@@ -1,7 +1,10 @@
 import { useState } from 'react'
+
 import { Button } from './Button'
-import { listItemStyle, listStyle, listTitleStyle } from './List.css'
+import { EllipseIcon } from './icons/EllipseIcon'
 import { Tooltip } from './TooltipMenu'
+
+import { listItemStyle, listStyle, listTitleStyle } from './List.css'
 
 type RowItemType = Record<string, unknown> & {
   content: string
@@ -13,10 +16,14 @@ const RowItem: React.FC<RowItemType> = ({ content, value }) => {
   return (
     <li className={listItemStyle} key={value}>
       <p>{content}</p>
-      <Tooltip close={() => setShow(false)} onClick={() => setShow(true)} icon={<p>Menu</p>} show={show}>
+      <Tooltip close={() => setShow(false)} onClick={() => setShow(true)} icon={<EllipseIcon />} show={show}>
         <div>
-          <Button style={'primary'}>Delete</Button>
-          <Button style={'primary'}>Edit</Button>
+          <Button style={'primary'} onClick={() => null}>
+            Delete
+          </Button>
+          <Button style={'primary'} onClick={() => null}>
+            Edit
+          </Button>
         </div>
       </Tooltip>
     </li>
@@ -35,8 +42,8 @@ export const List: React.FC<{ label: string; items: RowItemType[]; onAdd?: () =>
         {onAdd && <button onClick={onAdd}>+</button>}
       </div>
       <ul>
-        {items.map((item) => {
-          return <RowItem content={item.content} value={item.value} />
+        {items.map((item, index) => {
+          return <RowItem key={index} content={item.content} value={item.value} />
         })}
       </ul>
     </div>

@@ -7,8 +7,9 @@ export const listItemStyle = style({
   alignItems: 'center',
   justifyContent: 'left',
   height: '60px',
-  borderBottom: '1px solid red',
+  borderBottom: '1px solid black',
   padding: '0 8px',
+  cursor: 'pointer',
   selectors: {
     '&:last-child': {
       borderBottom: 'none',
@@ -40,12 +41,15 @@ globalStyle(`${listStyle} ul`, {
   padding: 0,
   margin: 0,
   listStyle: 'none',
+  color: 'black',
 })
 
 export const listTitleStyle = style({
   display: 'flex',
   flexDirection: 'row',
   color: 'white',
+  alignItems: 'center',
+  justifyContent: 'center',
 })
 
 globalStyle(`${listTitleStyle} button`, {

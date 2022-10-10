@@ -6,7 +6,7 @@ export const buttonStyle = style([
   base,
   {
     background: '#B88B4A',
-    height: '100px',
+    height: '60px',
     width: '100%',
     borderRadius: '6px',
   },
